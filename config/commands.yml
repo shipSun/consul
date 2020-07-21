@@ -1,0 +1,6 @@
+http:
+  class: Guzzle\client
+Cmd\ModelCommand:
+  class: Cmd\ModelCommand
+  isCommand: true
+

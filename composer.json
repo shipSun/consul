@@ -1,0 +1,27 @@
+{
+  "name": "ship-sun/console",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "type": "project",
+  "authors": [
+    {
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "require":{
+    "php":"7.2.1",
+    "symfony/console":"v4.4.10",
+    "symfony/dotenv":"v4.4.10",
+    "league/container":"3.3.1",
+    "symfony/yaml":"v4.4.10",
+    "guzzlehttp/guzzle":"6.5.5",
+    "symfony/cache":"v4.4.10"
+  },
+  "autoload": {
+    "psr-4":{
+      "Cmd\\": "cmd"
+    }
+  }
+}
