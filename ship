@@ -9,7 +9,7 @@ $commandFile = __DIR__.DIRECTORY_SEPARATOR."config".DIRECTORY_SEPARATOR."command
 $command = \Symfony\Component\Yaml\Yaml::parseFile($commandFile);
 
 $c = new \League\Container\Container();
-$c->addServiceProvider();
+
 foreach($command as $key=>$val){
     $c->add($key,$val['class'],$val['share']??false);
     if(isset($val['properties']) && is_array($val['properties'])){
@@ -23,17 +23,8 @@ foreach($command as $key=>$val){
 }
 
 $application = new Application("ship",'2.0');
-//$a = new ReflectionClass(ModelCommand::class);
-
-
-//$c->add(ModelCommand::class,ModelCommand::class,true);
-
-//$map[$c->get(ModelCommand::class)->getName()] = ModelCommand::class;
 
 $commandLoader = new Symfony\Component\Console\CommandLoader\ContainerCommandLoader($c,$map);
 $application->setCommandLoader($commandLoader);
-
-// 注册我们编写的命令 (commands)
-//$application->add(new ModelCommand());
 
 $application->run();
