@@ -6,4 +6,9 @@ Cmd\LoginCommand:
 Cmd\GoodsInfoCommand:
   class: Cmd\GoodsInfoCommand
   isCommand: true
-
+Cmd\PromotionShopCommand:
+  class: Cmd\PromotionShopCommand
+  isCommand: true
+Cmd\CreateOrderCommand:
+  class: Cmd\CreateOrderCommand
+  isCommand: true
