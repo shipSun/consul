@@ -1,6 +1,6 @@
 http:
   class: Guzzle\client
-Cmd\ModelCommand:
-  class: Cmd\ModelCommand
+Cmd\LoginCommand:
+  class: Cmd\LoginCommand
   isCommand: true
 
