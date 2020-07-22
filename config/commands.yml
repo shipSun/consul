@@ -3,4 +3,7 @@ http:
 Cmd\LoginCommand:
   class: Cmd\LoginCommand
   isCommand: true
+Cmd\GoodsInfoCommand:
+  class: Cmd\GoodsInfoCommand
+  isCommand: true
 
