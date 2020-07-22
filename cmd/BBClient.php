@@ -14,6 +14,8 @@ class BBClient extends Client
 {
     public $domain = 'https://o2otest.yesmywine.com/';
 
+    public $token;
+
     static protected $instance;
 
     public function __construct()
