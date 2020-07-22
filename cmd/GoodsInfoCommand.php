@@ -22,10 +22,9 @@ class GoodsInfoCommand extends Command
             ->setDescription('用户登录');
     }
     protected function execute(InputInterface $input, OutputInterface $output){
-        $json = <<<ETO
+        if(BBClient::instance()->login('13716526885')){
+            $json = <<<ETO
 {
-  "accessToken": "3dc904e6d4ed39fb0ca1413abf89ecd62c1232f5432b4f9574c2f3a36f1e8e64",
-  "format": "json",
   "method": "goods.detail",
   "activity_id": 53,
   "goods_id":67217,
@@ -35,9 +34,12 @@ class GoodsInfoCommand extends Command
 }
 ETO;
 
-        $request = new Request('POST','topapi',[],$json);
-        $response = BBClient::instance()->send($request);
-        $response = json_decode($response->getBody()->getContents(),true);
-        var_dump($response);
+
+            $request = new Request('POST','topapi',[],$json);
+            $response = BBClient::instance()->send($request);
+            $response = json_decode($response->getBody()->getContents(),true);
+            var_dump($response);
+        }
+
     }
 }
