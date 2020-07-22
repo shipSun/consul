@@ -12,3 +12,6 @@ Cmd\PromotionShopCommand:
 Cmd\CreateOrderCommand:
   class: Cmd\CreateOrderCommand
   isCommand: true
+Cmd\AddressCommand:
+  class: Cmd\AddressCommand
+  isCommand: true

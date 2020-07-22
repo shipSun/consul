@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Administrator
  * Date: 2020/7/22
- * Time: 6:23
+ * Time: 16:20
  */
 
 namespace Cmd;
@@ -13,25 +13,27 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class LoginCommand extends Command
+class AddressCommand extends Command
 {
     protected function configure()
     {
-        $this->setName('user:login')
+        $this->setName('user:address')
             ->setDescription('用户登录');
     }
-    protected function interact(InputInterface $input, OutputInterface $output)
-    {
-
-    }
-
     protected function execute(InputInterface $input, OutputInterface $output){
-        try{
-            if(BBClient::instance()->login('13716526885')){
-                $output->write('登录成功');
-            }
-        }catch (\RuntimeException $e){
-            $output->write($e->getMessage(),$e->getCode());
+        if(BBClient::instance()->login('13716526885')){
+            $json = <<<ETO
+{
+  "method": "member.address.list",
+  "v": "v1"
+}
+ETO;
+
+
+            $request = new Request('POST','topapi',[],$json);
+            $response = BBClient::instance()->send($request);
+            $response = json_decode($response->getBody()->getContents(),true);
+            var_dump($response);
         }
 
     }
