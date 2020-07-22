@@ -21,9 +21,13 @@ class LoginCommand extends Command
             ->setDescription('用户登录');
     }
     protected function execute(InputInterface $input, OutputInterface $output){
-        $request = new Request('POST','topapi',[],'{"account":"13716526885","vcode":null,"sms_code":"88888888","origin":1,"tag_type":null,"format":"json","v":"v1","method":"user.vue.login"}');
-        $response = BBClient::instance()->send($request);
-        $response = json_decode($response->getBody()->getContents(),true);
-        var_dump($response);
+        try{
+            if(BBClient::instance()->login('13716526885')){
+                $output->write('登录成功');
+            }
+        }catch (\RuntimeException $e){
+            $output->write($e->getMessage(),$e->getCode());
+        }
+
     }
 }
