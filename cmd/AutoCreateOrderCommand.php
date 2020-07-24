@@ -13,7 +13,6 @@ use Cmd\service\CreateOrder;
 use Cmd\service\ShopList;
 use Cmd\service\UserDefaultAddr;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Yaml;
