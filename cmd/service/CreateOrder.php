@@ -48,6 +48,7 @@ class CreateOrder
   "device_number": "$this->deviceNumber"
 }
 ETO;
+        var_dump($json);exit;
         $request = new Request('POST','topapi',[],$json);
         return BBClient::instance()->send($request);
     }

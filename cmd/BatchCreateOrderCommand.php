@@ -34,22 +34,25 @@ class BatchCreateOrderCommand extends Command
                 $cache = new SessionStore();
                 BBClient::instance()->token = $cache->token($phone);
                 if(!BBClient::instance()->token){
+                    $output->write('未登录');
                     continue;
                 }
                 $shop = (new ShopList($activity['activityId'],$activity['goodsId']))->largeWarehouse();
                 if(!$shop){
+                    $output->write('店铺不存在');
                     continue;
                 }
                 $shopId = $shop['shop_id'];
                 $addr = (new UserDefaultAddr())->default();
                 if(!$addr){
+                    $output->write('地址不存在');
                     continue;
                 }
                 $addrId = $addr['addr_id'];
 
-                $order = new CreateOrder($activity['activityId'],$addrId,$shopId,$activity['goodsId'],$phone);
+                $order = new CreateOrder($activity['goodsId'],$addrId,$shopId,$activity['activityId'],$phone);
                 $response = $order->run();
-                var_dump($response);
+                var_dump('ok',$response);
             }catch (\RuntimeException $e){
                 echo $e->getCode().$e->getMessage().PHP_EOL;
             }
