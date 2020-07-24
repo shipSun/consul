@@ -9,6 +9,7 @@
 namespace Cmd;
 
 
+use Cmd\service\ActivityGoodInfo;
 use GuzzleHttp\Psr7\Request;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,22 +24,9 @@ class GoodsInfoCommand extends Command
     }
     protected function execute(InputInterface $input, OutputInterface $output){
         if(BBClient::instance()->login('13716526885')){
-            $json = <<<ETO
-{
-  "method": "goods.detail",
-  "activity_id": 53,
-  "goods_id":67217,
-  "shop_id":"1",
-  "goods_number":2,
-  "v": "v1"
-}
-ETO;
-
-
-            $request = new Request('POST','topapi',[],$json);
-            $response = BBClient::instance()->send($request);
-            $response = json_decode($response->getBody()->getContents(),true);
-            var_dump($response);
+            $response = new ActivityGoodInfo(67217,53,1);
+            $response = $response->info();
+            var_dump($response);exit;
         }
 
     }
