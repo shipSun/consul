@@ -6,3 +6,6 @@ Cmd\LoginCommand:
 Cmd\CreateOrderCommand:
   class: Cmd\CreateOrderCommand
   isCommand: true
+Cmd\AutoCreateOrderCommand:
+  class: Cmd\AutoCreateOrderCommand
+  isCommand: true
