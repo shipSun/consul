@@ -30,10 +30,10 @@ class ActivityGoodInfo
         $json = <<<ETO
 {
   "method": "goods.detail",
-  "activity_id": $this->activityId,
-  "goods_id":$this->goodsId,
-  "shop_id":$this->activityId,
-  "goods_number":$this->num,
+  "activity_id": "$this->activityId",
+  "goods_id":"$this->goodsId",
+  "shop_id":"$this->activityId",
+  "goods_number":"$this->num",
   "v": "v1"
 }
 ETO;

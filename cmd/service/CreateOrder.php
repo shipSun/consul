@@ -37,15 +37,15 @@ class CreateOrder
 {
   "v": "v1",
   "method": "trade.create1499",
-  "goods_id":66257,
+  "goods_id": "$this->goodsId",
   "quantity":1,
-  "addr_id":1089,
-  "shop_id":1,
+  "addr_id": "$this->addrId",
+  "shop_id": "$this->shopId",
   "dlyType":4,
-  "ziti_mobile":"14846464546",
+  "ziti_mobile": "$this->zitiMobile",
   "payment_type": "online",
-  "activity_id":77,
-  "device_number":"abc"
+  "activity_id": "$this->activityId",
+  "device_number": "$this->deviceNumber"
 }
 ETO;
         $request = new Request('POST','topapi',[],$json);

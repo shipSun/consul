@@ -51,7 +51,7 @@ class BatchCreateOrderCommand extends Command
                 $response = $order->run();
                 var_dump($response);
             }catch (\RuntimeException $e){
-                echo $e->getMessage().PHP_EOL;
+                echo $e->getCode().$e->getMessage().PHP_EOL;
             }
         }
     }

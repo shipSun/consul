@@ -37,8 +37,8 @@ class ShopList
         $json = <<<ETO
 {
   "method": "rush.purchase.shop.list",
-  "activity_id": $this->activityId,
-  "goods_id":$this->goodsId,
+  "activity_id": "$this->activityId",
+  "goods_id":"$this->goodsId",
   "latLng":"39.866190,116.373740",
   "v": "v1"
 }
