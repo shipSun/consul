@@ -9,7 +9,6 @@
 namespace Cmd;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
 use function GuzzleHttp\Psr7\stream_for;
 use Psr\Http\Message\RequestInterface;
 

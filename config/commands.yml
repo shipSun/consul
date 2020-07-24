@@ -12,3 +12,6 @@ Cmd\BatchCreateOrderCommand:
 Cmd\BatchLoginCommand:
   class: Cmd\BatchLoginCommand
   isCommand: true
+Cmd\SubscribeCmmand:
+  class: Cmd\SubscribeCmmand
+  isCommand: true
