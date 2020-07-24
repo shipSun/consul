@@ -2,6 +2,7 @@
 namespace Cmd\service;
 
 use Cmd\BBClient;
+use GuzzleHttp\Psr7\Request;
 
 /**
  * Created by PhpStorm.
@@ -21,7 +22,20 @@ class UserDefaultAddr
 ETO;
         $request = new Request('POST','topapi',[],$json);
         $response = BBClient::instance()->send($request);
-        $response = json_decode($response->getBody()->getContents(),true);
-        var_dump($response);
+        $addr = '';
+        foreach($response['list'] as $val){
+            if($val['def_addr']==1){
+                $addr = $val;
+                break;
+            }
+        }
+
+        if(!$addr && count($response['list'])>0){
+            $addr = array_shift($response['list']);
+        }
+        if(!$addr){
+            throw new \RuntimeException('没有添加邮寄地址');
+        }
+        return $addr;
     }
 }

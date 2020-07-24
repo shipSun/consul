@@ -8,6 +8,7 @@
 
 namespace Cmd;
 
+use Cmd\service\UserDefaultAddr;
 use GuzzleHttp\Psr7\Request;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -22,19 +23,10 @@ class AddressCommand extends Command
     }
     protected function execute(InputInterface $input, OutputInterface $output){
         if(BBClient::instance()->login('13716526885')){
-            $json = <<<ETO
-{
-  "method": "member.address.list",
-  "v": "v1"
-}
-ETO;
-
-
-            $request = new Request('POST','topapi',[],$json);
-            $response = BBClient::instance()->send($request);
-            $response = json_decode($response->getBody()->getContents(),true);
-            var_dump($response);
+            $userDefaultAddr = new UserDefaultAddr();
+            $addr = $userDefaultAddr->default();
+            return $output->write($addr['addrdetail']);
         }
-
+        $output->write('登录失败');
     }
 }
