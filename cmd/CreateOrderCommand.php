@@ -30,24 +30,6 @@ class CreateOrderCommand extends Command
             $order = new CreateOrder(66257,1089,1,77,'1484644546');
             $response = $order->run();
             var_dump($response);exit;
-            $json = <<<ETO
-{
-  "v": "v1",
-  "method": "trade.create1499",
-  "goods_id":66257,
-  "quantity":1,
-  "addr_id":1089,
-  "shop_id":1,
-  "dlyType":4,
-  "ziti_mobile":"14846464546",
-  "payment_type": "online",
-  "activity_id":77,
-  "device_number":"abc"
-}
-ETO;
-            $request = new Request('POST','topapi',[],$json);
-            $response = BBClient::instance()->send($request);
-            var_dump(json_decode($response->getBody()->getContents(),true));
         }
 
     }
