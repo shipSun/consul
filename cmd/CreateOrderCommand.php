@@ -8,6 +8,7 @@
 
 namespace Cmd;
 use Cmd\service\CreateOrder;
+use Cmd\service\Login;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -32,6 +33,11 @@ class CreateOrderCommand extends Command
     {
         $cache = new SessionStore();
         BBClient::instance()->token = $cache->token($input->getArgument('u'));
+        if(!BBClient::instance()->token){
+            $login = new Login();
+            $login->run($input->getArgument('u'));
+            BBClient::instance()->token = $cache->token($input->getArgument('u'));
+        }
         $order = new CreateOrder($input->getArgument('g'),$input->getArgument('d'),$input->getArgument('s'),$input->getArgument('a'),$input->getArgument('z'));
         $response = $order->run();
         var_dump($response);exit;
