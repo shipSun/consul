@@ -32,8 +32,6 @@ class PROClient extends Client
         $headers['Accept-Encoding'] = 'gzip, deflate, br';
         $headers['Accept-Language'] = 'zh-CN,zh;q=0.9';
         $headers['Connection'] = 'keep-alive';
-        $headers['Origin'] = 'https://m.o2o.yesmywine.com';
-        $headers['Referer'] = 'https://m.o2o.yesmywine.com/maotai-active/goodsInfo/79068/3';
         $headers['Content-Type'] = 'application/x-www-form-urlencoded';
         $headers['User-Agent'] = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36 SE 2.X MetaSr 1.0";
         return $headers;
