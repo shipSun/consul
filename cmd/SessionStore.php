@@ -25,4 +25,11 @@ class SessionStore
         $item->set($data);
         return $this->cache->save($item);
     }
+    public function token($key){
+        $item = $this->cache->getItem($key);
+        if(!$item->get()){
+            throw new \RuntimeException('未登录');
+        }
+        return $item->get()['token'];
+    }
 }

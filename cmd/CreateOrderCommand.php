@@ -30,11 +30,11 @@ class CreateOrderCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if(BBClient::instance()->login($input->getArgument('u'))){
-            $order = new CreateOrder($input->getArgument('g'),$input->getArgument('d'),$input->getArgument('s'),$input->getArgument('a'),$input->getArgument('z'));
-            $response = $order->run();
-            var_dump($response);exit;
-        }
+        $cache = new SessionStore();
+        BBClient::instance()->token = $cache->token($input->getArgument('u'));
+        $order = new CreateOrder($input->getArgument('g'),$input->getArgument('d'),$input->getArgument('s'),$input->getArgument('a'),$input->getArgument('z'));
+        $response = $order->run();
+        var_dump($response);exit;
 
     }
 }
