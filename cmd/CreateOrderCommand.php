@@ -7,6 +7,7 @@
  */
 
 namespace Cmd;
+use Cmd\service\CreateOrder;
 use GuzzleHttp\Psr7\Request;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,6 +27,9 @@ class CreateOrderCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if(BBClient::instance()->login('13716526885')){
+            $order = new CreateOrder(66257,1089,1,77,'1484644546');
+            $response = $order->run();
+            var_dump($response);exit;
             $json = <<<ETO
 {
   "v": "v1",
