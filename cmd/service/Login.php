@@ -19,6 +19,6 @@ class Login
         $request = new Request('POST','topapi',[],'{"account":"'.$account.'","vcode":null,"sms_code":"88888888","origin":1,"tag_type":null,"v":"v1","method":"user.vue.login"}');
         $response = BBClient::instance()->send($request);
         $cache = new SessionStore();
-        $cache->save($account, ['token'=>$response['accessToken']]);
+        return $cache->save($account, ['token'=>$response['accessToken']]);
     }
 }
