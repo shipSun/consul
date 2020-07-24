@@ -17,12 +17,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Yaml;
 
-class AutoCreateOrderCommand extends Command
+class BatchCreateOrderCommand extends Command
 {
     protected function configure()
     {
         $this
-            ->setName('order:autocreate')
+            ->setName('order:create-batch')
             ->setDescription('创建订单');
     }
 

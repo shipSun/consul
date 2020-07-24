@@ -6,6 +6,9 @@ Cmd\LoginCommand:
 Cmd\CreateOrderCommand:
   class: Cmd\CreateOrderCommand
   isCommand: true
-Cmd\AutoCreateOrderCommand:
-  class: Cmd\AutoCreateOrderCommand
+Cmd\BatchCreateOrderCommand:
+  class: Cmd\BatchCreateOrderCommand
+  isCommand: true
+Cmd\BatchLoginCommand:
+  class: Cmd\BatchLoginCommand
   isCommand: true
