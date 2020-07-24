@@ -5,6 +5,7 @@ Cmd\LoginCommand:
   isCommand: true
 Cmd\GoodsInfoCommand:
   class: Cmd\GoodsInfoCommand
+  controler: 11
   isCommand: true
 Cmd\PromotionShopCommand:
   class: Cmd\PromotionShopCommand

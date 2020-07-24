@@ -22,11 +22,6 @@ class LoginCommand extends Command
             ->addArgument('name', InputArgument::REQUIRED, '账户')
             ->setDescription('用户登录');
     }
-    protected function interact(InputInterface $input, OutputInterface $output)
-    {
-        $fd = STDIN;
-        var_dump(fgets($fd));
-    }
 
     protected function execute(InputInterface $input, OutputInterface $output){
         try{
