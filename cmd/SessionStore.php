@@ -28,7 +28,7 @@ class SessionStore
     public function token($key){
         $item = $this->cache->getItem($key);
         if(!$item->get()){
-            throw new \RuntimeException('未登录');
+            return null;
         }
         return $item->get()['token'];
     }
