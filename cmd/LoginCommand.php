@@ -25,7 +25,6 @@ class LoginCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output){
         try{
-            var_dump($input->getArgument('name'));
             if(BBClient::instance()->login('13716526885')){
                 $output->write('登录成功');
             }
