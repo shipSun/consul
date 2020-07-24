@@ -14,7 +14,7 @@ use Psr\Http\Message\RequestInterface;
 
 class PROClient extends Client
 {
-    public $domain = 'http://192.168.50.102:888/';
+    public $domain = 'http://promotion.ship.com/';
 
     public $token;
 

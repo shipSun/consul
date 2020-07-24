@@ -33,6 +33,7 @@ class BatchCreateOrderCommand extends Command
             try{
                 $cache = new SessionStore();
                 BBClient::instance()->token = $cache->token($phone);
+
                 if(!BBClient::instance()->token){
                     $output->write('未登录');
                     continue;
@@ -52,7 +53,7 @@ class BatchCreateOrderCommand extends Command
 
                 $order = new CreateOrder($activity['goodsId'],$addrId,$shopId,$activity['activityId'],$phone);
                 $response = $order->run();
-                var_dump('ok',$response);
+                var_dump('ok',$response['tids'][0]);
             }catch (\RuntimeException $e){
                 echo $e->getCode().$e->getMessage().PHP_EOL;
             }
