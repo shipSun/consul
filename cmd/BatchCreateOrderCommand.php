@@ -30,25 +30,29 @@ class BatchCreateOrderCommand extends Command
     {
         $activity = Yaml::parseFile(dirname(__DIR__).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'activity.yml');
         foreach($activity['phone'] as $phone){
-            $cache = new SessionStore();
-            BBClient::instance()->token = $cache->token($phone);
-            if(!BBClient::instance()->token){
-                continue;
-            }
-            $shop = (new ShopList($activity['activityId'],$activity['goodsId']))->largeWarehouse();
-            if(!$shop){
-                continue;
-            }
-            $shopId = $shop['shop_id'];
-            $addr = (new UserDefaultAddr())->default();
-            if(!$addr){
-                continue;
-            }
-            $addrId = $addr['addr_id'];
+            try{
+                $cache = new SessionStore();
+                BBClient::instance()->token = $cache->token($phone);
+                if(!BBClient::instance()->token){
+                    continue;
+                }
+                $shop = (new ShopList($activity['activityId'],$activity['goodsId']))->largeWarehouse();
+                if(!$shop){
+                    continue;
+                }
+                $shopId = $shop['shop_id'];
+                $addr = (new UserDefaultAddr())->default();
+                if(!$addr){
+                    continue;
+                }
+                $addrId = $addr['addr_id'];
 
-            $order = new CreateOrder($activity['activityId'],$addrId,$shopId,$activity['goodsId'],$phone);
-            $response = $order->run();
-            var_dump($response);exit;
+                $order = new CreateOrder($activity['activityId'],$addrId,$shopId,$activity['goodsId'],$phone);
+                $response = $order->run();
+                var_dump($response);
+            }catch (\RuntimeException $e){
+                echo $e->getMessage().PHP_EOL;
+            }
         }
     }
 }
