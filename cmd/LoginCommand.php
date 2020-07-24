@@ -8,6 +8,7 @@
 
 namespace Cmd;
 
+use Cmd\service\Login;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,13 +20,14 @@ class LoginCommand extends Command
     {
         $this->setName('user:login')
             // 配置一个参数
-            ->addArgument('name', InputArgument::REQUIRED, '账户')
+            ->addArgument('phone', InputArgument::REQUIRED, '账户')
             ->setDescription('用户登录');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output){
         try{
-            if(BBClient::instance()->login('13716526885')){
+            $login = new Login();
+            if($login->run($input->getArgument('phone'))){
                 $output->write('登录成功');
             }
         }catch (\RuntimeException $e){

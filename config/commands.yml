@@ -3,16 +3,6 @@ http:
 Cmd\LoginCommand:
   class: Cmd\LoginCommand
   isCommand: true
-Cmd\GoodsInfoCommand:
-  class: Cmd\GoodsInfoCommand
-  controler: 11
-  isCommand: true
-Cmd\PromotionShopCommand:
-  class: Cmd\PromotionShopCommand
-  isCommand: true
 Cmd\CreateOrderCommand:
   class: Cmd\CreateOrderCommand
-  isCommand: true
-Cmd\AddressCommand:
-  class: Cmd\AddressCommand
   isCommand: true
