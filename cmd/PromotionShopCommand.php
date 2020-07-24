@@ -7,6 +7,7 @@
  */
 namespace Cmd;
 
+use Cmd\service\ShopList;
 use GuzzleHttp\Psr7\Request;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -25,17 +26,8 @@ class PromotionShopCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $json = <<<ETO
-{
-  "method": "rush.purchase.shop.list",
-  "activity_id": 40,
-  "goods_id":3,
-  "latLng":"39.866190,116.373740",
-  "v": "v1"
-}
-ETO;
-        $request = new Request('POST','topapi',[],$json);
-    $response = BBClient::instance()->send($request);
-    var_dump(json_decode($response->getBody()->getContents(),true));
+        BBClient::instance()->login('13716526885');
+        $response = new ShopList(40,3);
+        var_dump($response->largeWarehouse());
     }
 }
